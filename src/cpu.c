@@ -200,6 +200,14 @@ int executeInstruction(Cpu* cpu) {
             cpu->ac += fetchIndirectY(cpu);
             return isPageBoundaryCrossedByIndirectY(cpu) ? 6 : 5;
 
+        // JMP
+        case JMP_ABS:
+            cpu->pc = peekWord(cpu, cpu->pc);
+            return 3;
+        case JMP_IND:
+            cpu->pc = peekWord(cpu, peekWord(cpu, cpu->pc));
+            return 5;
+
         // JSR
         case JSR_ABS:
             pushWord(cpu, cpu->pc + 1);
