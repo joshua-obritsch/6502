@@ -342,6 +342,12 @@ int executeInstruction(Cpu* cpu) {
             setAbsolute(cpu, cpu->y);
             return 4;
 
+        // TAX
+        case TAX_IMPL:
+            cpu->x = cpu->ac;
+            setNonpositiveFlags(cpu, cpu->x);
+            return 2;
+
         // TSX
         case TSX_IMPL:
             cpu->x = popByte(cpu);

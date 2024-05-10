@@ -60,6 +60,7 @@ int main(int argc, char** argv) {
     STA();
     STX();
     STY();
+    TAX();
     TSX();
 
     printf("╔═[RESULTS]"); \
