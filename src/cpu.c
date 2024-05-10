@@ -342,6 +342,12 @@ int executeInstruction(Cpu* cpu) {
             setAbsolute(cpu, cpu->y);
             return 4;
 
+        // TSX
+        case TSX_IMPL:
+            cpu->x = popByte(cpu);
+            setNonpositiveFlags(cpu, cpu->x);
+            return 2;
+
         default:
             printf("Unexpected opcode: 0x%02x\n", opcode);
             exit(0);

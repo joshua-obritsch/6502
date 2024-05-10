@@ -60,6 +60,7 @@ int main(int argc, char** argv) {
     STA();
     STX();
     STY();
+    TSX();
 
     printf("╔═[RESULTS]"); \
     for (int i = 0; i < 68; i++) {
