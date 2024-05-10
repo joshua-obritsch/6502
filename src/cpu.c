@@ -360,6 +360,12 @@ int executeInstruction(Cpu* cpu) {
             setNonpositiveFlags(cpu, cpu->x);
             return 2;
 
+        // TXA
+        case TXA_IMPL:
+            cpu->ac = cpu->x;
+            setNonpositiveFlags(cpu, cpu->ac);
+            return 2;
+
         default:
             printf("Unexpected opcode: 0x%02x\n", opcode);
             exit(0);

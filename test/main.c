@@ -63,6 +63,7 @@ int main(int argc, char** argv) {
     TAX();
     TAY();
     TSX();
+    TXA();
 
     printf("╔═[RESULTS]"); \
     for (int i = 0; i < 68; i++) {
