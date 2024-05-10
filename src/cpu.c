@@ -348,6 +348,12 @@ int executeInstruction(Cpu* cpu) {
             setNonpositiveFlags(cpu, cpu->x);
             return 2;
 
+        // TAY
+        case TAY_IMPL:
+            cpu->y = cpu->ac;
+            setNonpositiveFlags(cpu, cpu->y);
+            return 2;
+
         // TSX
         case TSX_IMPL:
             cpu->x = popByte(cpu);

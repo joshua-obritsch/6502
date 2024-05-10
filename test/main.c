@@ -61,6 +61,7 @@ int main(int argc, char** argv) {
     STX();
     STY();
     TAX();
+    TAY();
     TSX();
 
     printf("╔═[RESULTS]"); \
