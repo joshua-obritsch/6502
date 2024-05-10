@@ -56,6 +56,7 @@ int main(int argc, char** argv) {
     LDA();
     LDX();
     LDY();
+    PHA();
     RTS();
     STA();
     STX();

@@ -292,6 +292,11 @@ int executeInstruction(Cpu* cpu) {
             setNonpositiveFlags(cpu, cpu->y);
             return isPageBoundaryCrossedByAbsoluteX(cpu) ? 5 : 4;
 
+        // PHA
+        case PHA_IMPL:
+            pushByte(cpu, cpu->ac);
+            return 3;
+
         // RTS
         case RTS_IMPL:
             cpu->pc = popWord(cpu) + 1;
