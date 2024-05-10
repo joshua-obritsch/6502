@@ -65,6 +65,7 @@ int main(int argc, char** argv) {
     TSX();
     TXA();
     TXS();
+    TYA();
 
     printf("╔═[RESULTS]"); \
     for (int i = 0; i < 68; i++) {

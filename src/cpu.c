@@ -371,6 +371,12 @@ int executeInstruction(Cpu* cpu) {
             cpu->sp = cpu->x;
             return 2;
 
+        // TYA
+        case TYA_IMPL:
+            cpu->ac = cpu->y;
+            setNonpositiveFlags(cpu, cpu->ac);
+            return 2;
+
         default:
             printf("Unexpected opcode: 0x%02x\n", opcode);
             exit(0);
