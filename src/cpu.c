@@ -302,6 +302,11 @@ int executeInstruction(Cpu* cpu) {
             cpu->pc = popWord(cpu) + 1;
             return 6;
 
+        // SEC
+        case SEC_IMPL:
+            cpu->c = 1;
+            return 2;
+
         // STA
         case STA_ZPG:
             setZeropage(cpu, cpu->ac);

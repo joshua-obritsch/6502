@@ -58,6 +58,7 @@ int main(int argc, char** argv) {
     LDY();
     PHA();
     RTS();
+    SEC();
     STA();
     STX();
     STY();
