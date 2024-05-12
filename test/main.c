@@ -59,6 +59,7 @@ int main(int argc, char** argv) {
     PHA();
     RTS();
     SEC();
+    SED();
     STA();
     STX();
     STY();
