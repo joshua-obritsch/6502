@@ -60,6 +60,7 @@ int main(int argc, char** argv) {
     RTS();
     SEC();
     SED();
+    SEI();
     STA();
     STX();
     STY();

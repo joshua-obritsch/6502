@@ -312,6 +312,11 @@ int executeInstruction(Cpu* cpu) {
             cpu->d = 1;
             return 2;
 
+        // SEI
+        case SEI_IMPL:
+            cpu->i = 1;
+            return 2;
+
         // STA
         case STA_ZPG:
             setZeropage(cpu, cpu->ac);
