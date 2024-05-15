@@ -52,6 +52,7 @@ int main(int argc, char** argv) {
 
     ADC();
     CLC();
+    CLD();
     JMP();
     JSR();
     LDA();

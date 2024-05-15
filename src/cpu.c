@@ -205,6 +205,11 @@ int executeInstruction(Cpu* cpu) {
             cpu->c = 0;
             return 2;
 
+        // CLD
+        case CLD_IMPL:
+            cpu->d = 0;
+            return 2;
+
         // JMP
         case JMP_ABS:
             cpu->pc = peekWord(cpu, cpu->pc);
