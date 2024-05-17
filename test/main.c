@@ -54,6 +54,7 @@ int main(int argc, char** argv) {
     CLC();
     CLD();
     CLI();
+    CLV();
     JMP();
     JSR();
     LDA();
