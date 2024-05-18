@@ -151,14 +151,18 @@ static inline int isPageBoundaryCrossedByIndirectY(Cpu* cpu) {
 
 // Sets the non-positive flags: negative and zero (NZ).
 void setNonpositiveFlags(Cpu* cpu, u8 value) {
-    cpu->n = (value & 0b10000000) > 0;
-    cpu->z = value == 0;
+    cpu->n = !!(value & 0x80u);
+    cpu->z = !value;
 }
 
 // Sets the arithmetic flags: negative, zero, carry, and overflow (NZCV).
 void setArithmeticFlags(Cpu* cpu) {
-    cpu->n = (cpu->ac & 0b10000000) > 0;
-    cpu->z = cpu->ac == 0;
+    cpu->n = !!(cpu->ac & 0x80u);
+    cpu->z = !cpu->ac;
+}
+
+void setOverflowFlag(Cpu* cpu, u8 a, u8 b, u8 c) {
+    cpu->v = (a ^ c) & (b ^ c) & 0x80u;
 }
 
 /*
