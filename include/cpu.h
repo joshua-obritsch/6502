@@ -4,7 +4,7 @@
 #include <stdint.h>
 
 #define MEMORY_SIZE  65536
-#define STACK_OFFSET 256
+#define STACK_OFFSET 511
 
 typedef int8_t   i8;
 typedef uint8_t  u8;
