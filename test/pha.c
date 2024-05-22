@@ -18,7 +18,7 @@ TEST_SUITE(PHA, {
         EXPECT_EQ(cpu.x             , 0x00  );
         EXPECT_EQ(cpu.y             , 0x00  );
         EXPECT_EQ(cpu.sr            , 0x00  );
-        EXPECT_EQ(cpu.sp            , 0x01  );
-        EXPECT_EQ(cpu.memory[0x0100], 0xA7  );
+        EXPECT_EQ(cpu.sp            , 0xFE  );
+        EXPECT_EQ(cpu.memory[0x01FF], 0xA7  );
     })
 })

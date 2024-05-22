@@ -19,7 +19,7 @@ TEST_SUITE(STY, {
         EXPECT_EQ(cpu.x             , 0x00  );
         EXPECT_EQ(cpu.y             , 0x78  );
         EXPECT_EQ(cpu.sr            , 0x00  );
-        EXPECT_EQ(cpu.sp            , 0x00  );
+        EXPECT_EQ(cpu.sp            , 0xFF  );
         EXPECT_EQ(cpu.memory[0x0044], 0x78  );
     })
 
@@ -40,7 +40,7 @@ TEST_SUITE(STY, {
         EXPECT_EQ(cpu.x             , 0x1F  );
         EXPECT_EQ(cpu.y             , 0xBE  );
         EXPECT_EQ(cpu.sr            , 0x00  );
-        EXPECT_EQ(cpu.sp            , 0x00  );
+        EXPECT_EQ(cpu.sp            , 0xFF  );
         EXPECT_EQ(cpu.memory[0x009A], 0xBE  );
     })
 
@@ -61,7 +61,7 @@ TEST_SUITE(STY, {
         EXPECT_EQ(cpu.x             , 0x8E  );
         EXPECT_EQ(cpu.y             , 0x36  );
         EXPECT_EQ(cpu.sr            , 0x00  );
-        EXPECT_EQ(cpu.sp            , 0x00  );
+        EXPECT_EQ(cpu.sp            , 0xFF  );
         EXPECT_EQ(cpu.memory[0x001F], 0x36  );
     })
 
@@ -82,7 +82,7 @@ TEST_SUITE(STY, {
         EXPECT_EQ(cpu.x             , 0x00  );
         EXPECT_EQ(cpu.y             , 0xC0  );
         EXPECT_EQ(cpu.sr            , 0x00  );
-        EXPECT_EQ(cpu.sp            , 0x00  );
+        EXPECT_EQ(cpu.sp            , 0xFF  );
         EXPECT_EQ(cpu.memory[0xBDAB], 0xC0  );
     })
 })

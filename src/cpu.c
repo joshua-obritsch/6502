@@ -116,7 +116,7 @@ static inline void setIndirectY(Cpu* cpu, u8 byte) {
 
 // Pushes a byte onto the stack.
 static inline void pushByte(Cpu* cpu, u8 byte) {
-    cpu->memory[STACK_OFFSET + cpu->sp++] = byte;
+    cpu->memory[STACK_OFFSET + cpu->sp--] = byte;
 }
 
 // Pushes a word onto the stack.
@@ -126,7 +126,7 @@ static inline void pushWord(Cpu* cpu, u16 word) {
 
 // Pops a byte off the stack.
 static inline u8 popByte(Cpu* cpu) {
-    return cpu->memory[STACK_OFFSET + --cpu->sp];
+    return cpu->memory[STACK_OFFSET + ++cpu->sp];
 }
 
 // Pops a word off the stack.
@@ -434,7 +434,7 @@ void resetCpu(Cpu* cpu) {
     cpu->x  = 0;
     cpu->y  = 0;
     cpu->sr = 0;
-    cpu->sp = 0x00;
+    cpu->sp = 0xFF;
 
     for (int i = 0; i < MEMORY_SIZE; i++) {
         cpu->memory[i] = 0;

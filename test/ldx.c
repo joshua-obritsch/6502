@@ -18,7 +18,7 @@ TEST_SUITE(LDX, {
         EXPECT_EQ(cpu.x , 0x06  );
         EXPECT_EQ(cpu.y , 0x00  );
         EXPECT_EQ(cpu.sr, 0x00  );
-        EXPECT_EQ(cpu.sp, 0x00  );
+        EXPECT_EQ(cpu.sp, 0xFF  );
     })
 
     TEST("LDX zeropage", {
@@ -37,7 +37,7 @@ TEST_SUITE(LDX, {
         EXPECT_EQ(cpu.x , 0x8A  );
         EXPECT_EQ(cpu.y , 0x00  );
         EXPECT_EQ(cpu.sr, 0x80  );
-        EXPECT_EQ(cpu.sp, 0x00  );
+        EXPECT_EQ(cpu.sp, 0xFF  );
     })
 
     TEST("LDX zeropage,Y", {
@@ -57,7 +57,7 @@ TEST_SUITE(LDX, {
         EXPECT_EQ(cpu.x , 0xD7  );
         EXPECT_EQ(cpu.y , 0x08  );
         EXPECT_EQ(cpu.sr, 0x80  );
-        EXPECT_EQ(cpu.sp, 0x00  );
+        EXPECT_EQ(cpu.sp, 0xFF  );
     })
 
     TEST("LDX zeropage,Y with wrapping", {
@@ -77,7 +77,7 @@ TEST_SUITE(LDX, {
         EXPECT_EQ(cpu.x , 0x3B  );
         EXPECT_EQ(cpu.y , 0xE5  );
         EXPECT_EQ(cpu.sr, 0x00  );
-        EXPECT_EQ(cpu.sp, 0x00  );
+        EXPECT_EQ(cpu.sp, 0xFF  );
     })
 
     TEST("LDX absolute", {
@@ -97,7 +97,7 @@ TEST_SUITE(LDX, {
         EXPECT_EQ(cpu.x , 0x87  );
         EXPECT_EQ(cpu.y , 0x00  );
         EXPECT_EQ(cpu.sr, 0x80  );
-        EXPECT_EQ(cpu.sp, 0x00  );
+        EXPECT_EQ(cpu.sp, 0xFF  );
     })
 
     TEST("LDX absolute,Y", {
@@ -118,7 +118,7 @@ TEST_SUITE(LDX, {
         EXPECT_EQ(cpu.x , 0xF2  );
         EXPECT_EQ(cpu.y , 0x35  );
         EXPECT_EQ(cpu.sr, 0x80  );
-        EXPECT_EQ(cpu.sp, 0x00  );
+        EXPECT_EQ(cpu.sp, 0xFF  );
     })
 
     TEST("LDX absolute,Y with crossed page boundary", {
@@ -139,6 +139,6 @@ TEST_SUITE(LDX, {
         EXPECT_EQ(cpu.x , 0x0F  );
         EXPECT_EQ(cpu.y , 0xEF  );
         EXPECT_EQ(cpu.sr, 0x00  );
-        EXPECT_EQ(cpu.sp, 0x00  );
+        EXPECT_EQ(cpu.sp, 0xFF  );
     })
 })

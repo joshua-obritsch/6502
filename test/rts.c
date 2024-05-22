@@ -5,9 +5,9 @@
 TEST_SUITE(RTS, {
     TEST("RTS absolute", {
         // Given:
-        cpu.sp             = 0x02;
-        cpu.memory[0x0100] = 0xAB;
-        cpu.memory[0x0101] = 0xD6;
+        cpu.sp             = 0xFD;
+        cpu.memory[0x01FF] = 0xAB;
+        cpu.memory[0x01FE] = 0xD6;
         cpu.memory[0xFFFC] = RTS_IMPL;
 
         // When:
@@ -20,6 +20,6 @@ TEST_SUITE(RTS, {
         EXPECT_EQ(cpu.x , 0x00  );
         EXPECT_EQ(cpu.y , 0x00  );
         EXPECT_EQ(cpu.sr, 0x00  );
-        EXPECT_EQ(cpu.sp, 0x00  );
+        EXPECT_EQ(cpu.sp, 0xFF  );
     })
 })

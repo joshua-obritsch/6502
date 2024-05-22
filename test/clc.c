@@ -18,6 +18,6 @@ TEST_SUITE(CLC, {
         EXPECT_EQ(cpu.x , 0x00  );
         EXPECT_EQ(cpu.y , 0x00  );
         EXPECT_EQ(cpu.sr, 0x00  );
-        EXPECT_EQ(cpu.sp, 0x00  );
+        EXPECT_EQ(cpu.sp, 0xFF  );
     })
 })

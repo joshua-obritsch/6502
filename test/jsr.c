@@ -19,8 +19,8 @@ TEST_SUITE(JSR, {
         EXPECT_EQ(cpu.x             , 0x00  );
         EXPECT_EQ(cpu.y             , 0x00  );
         EXPECT_EQ(cpu.sr            , 0x00  );
-        EXPECT_EQ(cpu.sp            , 0x02  );
-        EXPECT_EQ(cpu.memory[0x0100], 0xFE  );
-        EXPECT_EQ(cpu.memory[0x0101], 0xFF  );
+        EXPECT_EQ(cpu.sp            , 0xFD  );
+        EXPECT_EQ(cpu.memory[0x01FF], 0xFE  );
+        EXPECT_EQ(cpu.memory[0x01FE], 0xFF  );
     })
 })
