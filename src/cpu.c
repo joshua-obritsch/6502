@@ -433,7 +433,7 @@ void resetCpu(Cpu* cpu) {
     cpu->ac = 0;
     cpu->x  = 0;
     cpu->y  = 0;
-    cpu->sr = 0;
+    cpu->sr = 0x04;
     cpu->sp = 0xFF;
 
     for (int i = 0; i < MEMORY_SIZE; i++) {
