@@ -16,7 +16,7 @@ TEST_SUITE(ADC, {
         EXPECT_EQ(cpu.ac, 0x00  );
         EXPECT_EQ(cpu.x , 0x00  );
         EXPECT_EQ(cpu.y , 0x00  );
-        EXPECT_EQ(cpu.sr, 0x06  );
-        EXPECT_EQ(cpu.sp, 0xFF  );
+        EXPECT_EQ(cpu.sr, 0x02  );
+        EXPECT_EQ(cpu.sp, 0x00  );
     })
 })
