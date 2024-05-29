@@ -13,7 +13,7 @@ typedef uint16_t u16;
 typedef struct Cpu {
     // Registers
     u16 pc; // Program counter    (16 bit)
-    u8  ac; // Accumulator         (8 bit)
+    u8   a; // Accumulator         (8 bit)
     u8   x; // X register          (8 bit)
     u8   y; // Y register          (8 bit)
     u8  sp; // Stack pointer       (8 bit)
