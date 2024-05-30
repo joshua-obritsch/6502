@@ -157,8 +157,8 @@ void setNonpositiveFlags(Cpu* cpu, u8 value) {
 
 // Sets the arithmetic flags: negative, zero, carry, and overflow (NZCV).
 void setArithmeticFlags(Cpu* cpu) {
-    cpu->n = !!(cpu->ac & 0x80u);
-    cpu->z = !cpu->ac;
+    cpu->n = !!(cpu->a & 0x80u);
+    cpu->z = !cpu->a;
 }
 
 void setOverflowFlag(Cpu* cpu, u8 a, u8 b, u8 c) {
@@ -179,29 +179,29 @@ int executeInstruction(Cpu* cpu) {
     switch (opcode) {
         // ADC
         case ADC_IMM:
-            cpu->ac += (i8)fetchByte(cpu) + cpu->c;
+            cpu->a += (i8)fetchByte(cpu) + cpu->c;
             setArithmeticFlags(cpu);
             return 2;
         case ADC_ZPG:
-            cpu->ac += fetchZeropage(cpu);
+            cpu->a += fetchZeropage(cpu);
             return 3;
         case ADC_ZPGX:
-            cpu->ac += fetchZeropageX(cpu);
+            cpu->a += fetchZeropageX(cpu);
             return 4;
         case ADC_ABS:
-            cpu->ac += fetchAbsolute(cpu);
+            cpu->a += fetchAbsolute(cpu);
             return 4;
         case ADC_ABSX:
-            cpu->ac += fetchAbsoluteX(cpu);
+            cpu->a += fetchAbsoluteX(cpu);
             return isPageBoundaryCrossedByAbsoluteX(cpu) ? 5 : 4;
         case ADC_ABSY:
-            cpu->ac += fetchAbsoluteY(cpu);
+            cpu->a += fetchAbsoluteY(cpu);
             return isPageBoundaryCrossedByAbsoluteY(cpu) ? 5 : 4;
         case ADC_INDX:
-            cpu->ac += fetchIndirectX(cpu);
+            cpu->a += fetchIndirectX(cpu);
             return 6;
         case ADC_INDY:
-            cpu->ac += fetchIndirectY(cpu);
+            cpu->a += fetchIndirectY(cpu);
             return isPageBoundaryCrossedByIndirectY(cpu) ? 6 : 5;
 
         // CLC
@@ -240,36 +240,36 @@ int executeInstruction(Cpu* cpu) {
 
         // LDA
         case LDA_IMM:
-            cpu->ac = fetchByte(cpu);
-            setNonpositiveFlags(cpu, cpu->ac);
+            cpu->a = fetchByte(cpu);
+            setNonpositiveFlags(cpu, cpu->a);
             return 2;
         case LDA_ZPG:
-            cpu->ac = fetchZeropage(cpu);
-            setNonpositiveFlags(cpu, cpu->ac);
+            cpu->a = fetchZeropage(cpu);
+            setNonpositiveFlags(cpu, cpu->a);
             return 3;
         case LDA_ZPGX:
-            cpu->ac = fetchZeropageX(cpu);
-            setNonpositiveFlags(cpu, cpu->ac);
+            cpu->a = fetchZeropageX(cpu);
+            setNonpositiveFlags(cpu, cpu->a);
             return 4;
         case LDA_ABS:
-            cpu->ac = fetchAbsolute(cpu);
-            setNonpositiveFlags(cpu, cpu->ac);
+            cpu->a = fetchAbsolute(cpu);
+            setNonpositiveFlags(cpu, cpu->a);
             return 4;
         case LDA_ABSX:
-            cpu->ac = fetchAbsoluteX(cpu);
-            setNonpositiveFlags(cpu, cpu->ac);
+            cpu->a = fetchAbsoluteX(cpu);
+            setNonpositiveFlags(cpu, cpu->a);
             return isPageBoundaryCrossedByAbsoluteX(cpu) ? 5 : 4;
         case LDA_ABSY:
-            cpu->ac = fetchAbsoluteY(cpu);
-            setNonpositiveFlags(cpu, cpu->ac);
+            cpu->a = fetchAbsoluteY(cpu);
+            setNonpositiveFlags(cpu, cpu->a);
             return isPageBoundaryCrossedByAbsoluteY(cpu) ? 5 : 4;
         case LDA_INDX:
-            cpu->ac = fetchIndirectX(cpu);
-            setNonpositiveFlags(cpu, cpu->ac);
+            cpu->a = fetchIndirectX(cpu);
+            setNonpositiveFlags(cpu, cpu->a);
             return 6;
         case LDA_INDY:
-            cpu->ac = fetchIndirectY(cpu);
-            setNonpositiveFlags(cpu, cpu->ac);
+            cpu->a = fetchIndirectY(cpu);
+            setNonpositiveFlags(cpu, cpu->a);
             return isPageBoundaryCrossedByIndirectY(cpu) ? 6 : 5;
 
         // LDX
@@ -318,7 +318,7 @@ int executeInstruction(Cpu* cpu) {
 
         // PHA
         case PHA_IMPL:
-            pushByte(cpu, cpu->ac);
+            pushByte(cpu, cpu->a);
             return 3;
 
         // RTS
@@ -343,25 +343,25 @@ int executeInstruction(Cpu* cpu) {
 
         // STA
         case STA_ZPG:
-            setZeropage(cpu, cpu->ac);
+            setZeropage(cpu, cpu->a);
             return 3;
         case STA_ZPGX:
-            setZeropageX(cpu, cpu->ac);
+            setZeropageX(cpu, cpu->a);
             return 4;
         case STA_ABS:
-            setAbsolute(cpu, cpu->ac);
+            setAbsolute(cpu, cpu->a);
             return 4;
         case STA_ABSX:
-            setAbsoluteX(cpu, cpu->ac);
+            setAbsoluteX(cpu, cpu->a);
             return 5;
         case STA_ABSY:
-            setAbsoluteY(cpu, cpu->ac);
+            setAbsoluteY(cpu, cpu->a);
             return 5;
         case STA_INDX:
-            setIndirectX(cpu, cpu->ac);
+            setIndirectX(cpu, cpu->a);
             return 6;
         case STA_INDY:
-            setIndirectY(cpu, cpu->ac);
+            setIndirectY(cpu, cpu->a);
             return 6;
 
         // STX
@@ -388,13 +388,13 @@ int executeInstruction(Cpu* cpu) {
 
         // TAX
         case TAX_IMPL:
-            cpu->x = cpu->ac;
+            cpu->x = cpu->a;
             setNonpositiveFlags(cpu, cpu->x);
             return 2;
 
         // TAY
         case TAY_IMPL:
-            cpu->y = cpu->ac;
+            cpu->y = cpu->a;
             setNonpositiveFlags(cpu, cpu->y);
             return 2;
 
@@ -406,8 +406,8 @@ int executeInstruction(Cpu* cpu) {
 
         // TXA
         case TXA_IMPL:
-            cpu->ac = cpu->x;
-            setNonpositiveFlags(cpu, cpu->ac);
+            cpu->a = cpu->x;
+            setNonpositiveFlags(cpu, cpu->a);
             return 2;
 
         // TXS
@@ -417,23 +417,23 @@ int executeInstruction(Cpu* cpu) {
 
         // TYA
         case TYA_IMPL:
-            cpu->ac = cpu->y;
-            setNonpositiveFlags(cpu, cpu->ac);
+            cpu->a = cpu->y;
+            setNonpositiveFlags(cpu, cpu->a);
             return 2;
 
         default:
             printf("Unexpected opcode: 0x%02x\n", opcode);
             exit(0);
     }
-    /*setNegativeFlag(cpu, cpu->ac); setZeroFlag(cpu, cpu->ac);*/
+    /*setNegativeFlag(cpu, cpu->a); setZeroFlag(cpu, cpu->a);*/
 }
 
 void resetCpu(Cpu* cpu) {
     cpu->pc = 0xFFFC;
-    cpu->ac = 0;
+    cpu->a  = 0;
     cpu->x  = 0;
     cpu->y  = 0;
-    cpu->sr = 0x00;
+    cpu->sr = 0x04;
     cpu->sp = 0x00;
 
     for (int i = 0; i < MEMORY_SIZE; i++) {
