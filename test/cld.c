@@ -14,7 +14,7 @@ TEST_SUITE(CLD, {
         // Then:
         EXPECT_EQ(cycles, 2     );
         EXPECT_EQ(cpu.pc, 0xFFFD);
-        EXPECT_EQ(cpu.ac, 0x00  );
+        EXPECT_EQ(cpu.a , 0x00  );
         EXPECT_EQ(cpu.x , 0x00  );
         EXPECT_EQ(cpu.y , 0x00  );
         EXPECT_EQ(cpu.sr, 0x00  );
